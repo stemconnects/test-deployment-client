@@ -19,7 +19,7 @@ function CreatePosts() {
     })
     
     const onSubmit = (data) =>{
-        axios.post("http://localhost:3001/posts", data).then( (response) => {
+        axios.post("https://stemconnects.herokuapp.com/posts", data).then( (response) => {
             navigate("/");
     });
     }

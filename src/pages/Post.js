@@ -12,18 +12,18 @@ function Post() {
     const {authState} = useContext(AuthContext);
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/posts/byId/${id}`).then( (response) => {
+        axios.get(`https://stemconnects.herokuapp.com/posts/byId/${id}`).then( (response) => {
             setPostObject(response.data);
         });
 
-        axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
+        axios.get(`https://stemconnects.herokuapp.com/comments/${id}`).then((response) => {
         setComments(response.data);
       });
     }, []);
     
     const addComment = () => {
         axios
-          .post("http://localhost:3001/comments", {
+          .post("https://stemconnects.herokuapp.com/comments", {
             commentBody: newComment,
             PostId: id,
           },
@@ -45,7 +45,7 @@ function Post() {
 
       const deleteComment = (id) => {
         axios
-          .delete(`http://localhost:3001/comments/${id}`, {
+          .delete(`https://stemconnects.herokuapp.com/comments/${id}`, {
             headers: { accessToken: localStorage.getItem("accessToken") },
           })
           .then(() => {
